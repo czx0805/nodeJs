@@ -29,7 +29,8 @@ router.post("/", function (req, res) {
         title: title,
         introduce: intro,
         content : htmlStr,
-        imgSrc: 'images/img_0'+ randomNum +'.jpg'
+        imgSrc: 'images/img_0'+ randomNum +'.jpg',
+        idNum : Math.random()+""
     }, new callback());
 });
 

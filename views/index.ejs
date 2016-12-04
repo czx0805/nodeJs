@@ -42,21 +42,7 @@
             $("header").css({"transform": "scale(1)", "transition": "1s"});
             $(".tag").css({transform: "translateY(0)"});
         }, 0);
-        var APP_ID = "NI60ee0cFK2XJzQYvIgxwT95-gzGzoHsz";
-        var APP_KEY = "10KxJj5D684Wz6XOkUBeapa0";
-        AV.init({
-            appId: APP_ID,
-            appKey: APP_KEY
-        });
-        var TestObject = AV.Object.extend('TestObject');
-        var testObject = new TestObject();
-        testObject.save({
-            words: 'Hello World!'
-        }).then(function (object) {
-            alert('LeanCloud Rocks!');
-        })
     });
 </script>
 </body>
-
 </html>

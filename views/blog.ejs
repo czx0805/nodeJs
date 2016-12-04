@@ -16,7 +16,7 @@
                 <div class="articleIntro">
                     <%= data[i].get('introduce') %>
                 </div>
-                <div class="read">
+                <div class="read" data-titleName=<%= data[i].get('idNum') %>>
                     阅读全文
                 </div>
             </div>
@@ -39,6 +39,9 @@
             });
             $("header .blog").addClass("checkBlog");
             $("header .blog").removeClass("blog");
+            $(document).delegate("[data-titleName]","click",function(){
+                location.href = "/detail?title=" + $(this).attr("data-titleName");
+            });
         });
     </script>
 </body>

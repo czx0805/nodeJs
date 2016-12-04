@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/blog.css">
+    <link rel="stylesheet" href="editor/css/editormd.css"/>
+    <link rel="stylesheet" href="editor/css/editormd.preview.css"/>
+    <link rel="stylesheet" href="editor/css/editormd.logo.min.css"/>
+</head>
+<body>
+    <% include header %>
+    <div class=".editormd-preview-container" style="padding: 20px 5%">
+        <%- content %>
+    </div>
+</body>
+</html>

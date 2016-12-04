@@ -9,6 +9,9 @@ function DBService(tableObj) {
 DBService.prototype.queryData = function (queryObj, callback) {
     var _this = this;
     var query = new AV.Query(_this.tableObj);
+    for(var item in queryObj){
+        query.equalTo(item,queryObj[item]);
+    }
     query.find({}).then(function (results) {
         callback.execute(results);
     }, function (err) {

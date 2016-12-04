@@ -199,6 +199,7 @@ header .tab3:hover strong:before {
 }
 
 .blog .article {
+    display: block;
     padding: 19px;
     box-sizing: border-box;
     border-radius: 4px;

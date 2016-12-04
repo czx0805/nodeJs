@@ -28,7 +28,9 @@ app.use('/users', users);
 //blog router
 app.use('/blog',require('./routes/blog'));
 //edit router
-app.use('/edit',require('./routes/edit'))
+app.use('/edit',require('./routes/edit'));
+//article info
+app.use('/detail',require('./routes/detail'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

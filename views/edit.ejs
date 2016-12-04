@@ -58,9 +58,9 @@
             path: "editor/lib/"
         });
         $(".confirm").click(function () {
-            var title = $(".markdown-body").find("h1").eq(0).text();
-            var html = $(".markdown-body").html();
-            var intro = $(".markdown-body").text().substring(0, 100);
+            var title = $(".editormd-preview").find("h1").eq(0).text();
+            var html = $(".editormd-preview").html();
+            var intro = $(".editormd-preview").text().substring(0, 100);
             $.post("/edit", {title: title, intro: intro, data: html}, function (result) {
                 location.href = "/blog";
             });
