@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="editor/style.css"/>
+    <link rel="stylesheet" href="editor/css/editormd.css"/>
+</head>
+
+<body>
+<div id="layout">
+    <header>
+        <a href="/">求知欲与装逼欲并发</a>
+    </header>
+    <div id="test-editormd">
+            <textarea style="display:none;">
+            </textarea>
+    </div>
+    <div class="confirmBodyBg" style="display: none">
+        <div class="confirmBody">
+            <div class="form">
+                <div>
+                    <span class="title">标题</span>：
+                    <input type="text">
+                </div>
+            </div>
+            <div class="footer">
+                <div class="confirm">
+                    确定
+                </div>
+                <div class="cancel">
+                    取消
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="confirm">
+            确定
+        </div>
+        <div class="cancel">
+            取消
+        </div>
+    </footer>
+</div>
+<script type="text/javascript" src="lib/jquery-2.2.2.min.js"></script>
+<script src="../editor/editormd.min.js"></script>
+<script type="text/javascript">
+    var testEditor;
+    $(function () {
+        testEditor = editormd("test-editormd", {
+            width: "90%",
+            height: 640,
+            syncScrolling: "single",
+            path: "editor/lib/"
+        });
+        $(".confirm").click(function () {
+            var title = $(".markdown-body").find("h1").eq(0).text();
+            var html = $(".markdown-body").html();
+            var intro = $(".markdown-body").text().substring(0, 100);
+            $.post("/edit", {title: title, intro: intro, data: html}, function (result) {
+                location.href = "/blog";
+            });
+        });
+        $(".cancel").click(function () {
+            location.href = "/";
+        });
+    });
+
+</script>
+</body>
+</html>

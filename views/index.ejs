@@ -1,11 +1,62 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/index.css">
+</head>
+
+<body>
+<header>
+    <h1>stay hungry,stay foolish</h1>
+</header>
+<div id="tags" class="container">
+    <div class="tag tag1" onclick="location.href = '/work'">
+        <a href="#">
+            <strong>
+                WORK
+            </strong>
+        </a>
+    </div>
+    <div class="tag tag2" onclick="location.href = '/blog'">
+        <a href="#">
+            <strong>
+                BLOG
+            </strong>
+        </a>
+    </div>
+    <div class="tag tag3" onclick="location.href = '/about'">
+        <a href="#">
+            <strong>
+                ABOUT
+            </strong>
+        </a>
+    </div>
+</div>
+<script type="text/javascript" src="lib/jquery-2.2.2.min.js"></script>
+<script src="https://cdn1.lncld.net/static/js/av-min-1.5.0.js"></script>
+<script>
+    $(function () {
+        setTimeout(function () {
+            $("header").css({"transform": "scale(1)", "transition": "1s"});
+            $(".tag").css({transform: "translateY(0)"});
+        }, 0);
+        var APP_ID = "NI60ee0cFK2XJzQYvIgxwT95-gzGzoHsz";
+        var APP_KEY = "10KxJj5D684Wz6XOkUBeapa0";
+        AV.init({
+            appId: APP_ID,
+            appKey: APP_KEY
+        });
+        var TestObject = AV.Object.extend('TestObject');
+        var testObject = new TestObject();
+        testObject.save({
+            words: 'Hello World!'
+        }).then(function (object) {
+            alert('LeanCloud Rocks!');
+        })
+    });
+</script>
+</body>
+
 </html>

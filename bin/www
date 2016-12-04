@@ -3,7 +3,13 @@
 /**
  * Module dependencies.
  */
+var AV = require('leanengine');
 
+AV.init({
+  appId: "NI60ee0cFK2XJzQYvIgxwT95-gzGzoHsz",
+  appKey: "10KxJj5D684Wz6XOkUBeapa0",
+  masterKey: "HPyrC7PFaciihTWGUTfALTcm"
+});
 var app = require('../app');
 var debug = require('debug')('test:server');
 var http = require('http');
