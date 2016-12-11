@@ -14,7 +14,7 @@ router.get("/", function (req, res) {
     function callback() {
         this.execute = function (dataList) {
             res.render('detail', {
-                title: req.query.title,
+                title: dataList[0].get('title'),
                 content: dataList[0].get('content')
             });
         }
