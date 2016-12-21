@@ -9,7 +9,6 @@ var Article = AV.Object.extend('Article');
 
 router.get("/", function (req, res) {
     var db = new DB(Article);
-
     function callback() {
         this.execute = function (dataList) {
             res.render('blog', {
@@ -18,7 +17,6 @@ router.get("/", function (req, res) {
             });
         }
     }
-    
     db.queryData({}, new callback());
 });
 

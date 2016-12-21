@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="stylesheets/login.css">
+</head>
+<body>
+    <div class="container">
+        <label for="name" class="formLabel">Username</label>
+        <input type="text" class="formInput" required="required" name="name"/>
+        <label for="password" class="formLabel">Password</label>
+        <input type="password" class="formInput" required="required" name="password"/>
+        <button class="submitBtn">Login</button>
+    </div>
+    <script type="text/javascript" src="lib/jquery-2.2.2.min.js"></script>
+    <script>
+        $(function(){
+            $('.submitBtn').eq(0).bind("click",function(){
+                var userName = $('input[name="name"]').val();
+                var passWord =$('input[name="password"]').val();
+                if(!userName || !passWord){
+                    alert("请填写用户名或密码!");
+                    return;
+                }
+                $.post("/login", {username: userName, password: passWord}, function (result) {
+                    if(result){
+                        location.href = '/blog';
+                    }else{
+                        alert("用户名或密码错误!");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

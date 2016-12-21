@@ -4,6 +4,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
@@ -21,6 +22,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: Math.random().toString(36).substr(2),
+  name : 'sessionId',
+  cookie : {
+    maxAge : 1000 * 60 * 60
+  }
+}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
@@ -31,7 +39,8 @@ app.use('/blog',require('./routes/blog'));
 app.use('/edit',require('./routes/edit'));
 //article info
 app.use('/detail',require('./routes/detail'));
-
+//login routes
+app.use('/login',require('./routes/login'));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

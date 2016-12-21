@@ -8,9 +8,14 @@ var DB = require('../public/javascripts/dbService');
 var Article = AV.Object.extend('Article');
 
 router.get("/", function (req, res) {
-    res.render('edit', {
-        title: 'edit'
-    });
+    if(req.session.user){
+        res.render('edit', {
+            title: 'edit'
+        });
+    }else{
+        res.redirect('/blog');
+    }
+
 });
 
 router.post("/", function (req, res) {
